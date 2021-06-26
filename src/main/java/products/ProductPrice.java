@@ -1,6 +1,7 @@
-package com.company.products;
+package products;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 public class ProductPrice {
     private final BigDecimal originalPrice;
@@ -42,5 +43,18 @@ public class ProductPrice {
 
     public BigDecimal getDiscountPercentage() {
         return discountPercentage;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ProductPrice that = (ProductPrice) o;
+        return isDiscounted == that.isDiscounted && originalPrice.equals(that.originalPrice) && discountAmount.equals(that.discountAmount) && discountPercentage.equals(that.discountPercentage);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(originalPrice, discountAmount, discountPercentage, isDiscounted);
     }
 }
