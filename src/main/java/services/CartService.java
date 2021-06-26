@@ -1,7 +1,7 @@
-package com.company.services;
+package services;
 
-import com.company.distribution.CartItem;
-import com.company.utils.Pair;
+import distribution.CartItem;
+import utils.Pair;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

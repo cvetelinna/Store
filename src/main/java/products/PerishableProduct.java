@@ -1,10 +1,8 @@
-package com.company.products;
+package products;
 
-import com.company.enums.ProductTypeEnum;
-import com.company.utils.Constants;
+import enums.ProductTypeEnum;
 
 import java.math.BigDecimal;
-import java.time.Duration;
 import java.time.Instant;
 
 public class PerishableProduct extends BaseProduct {

@@ -1,6 +1,6 @@
-package com.company.services;
+package services;
 
-import com.company.distribution.CartItem;
+import distribution.CartItem;
 
 import java.math.BigDecimal;
 import java.util.List;

@@ -1,7 +1,7 @@
-package com.company.distribution;
+package distribution;
 
-import com.company.products.BaseProduct;
-import com.company.products.PerishableProduct;
+
+import products.BaseProduct;
 
 import java.math.BigDecimal;
 

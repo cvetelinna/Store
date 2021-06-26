@@ -1,6 +1,6 @@
-package com.company.products;
+package products;
 
-import com.company.enums.ProductTypeEnum;
+import enums.ProductTypeEnum;
 
 import java.math.BigDecimal;
 

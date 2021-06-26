@@ -1,4 +1,4 @@
-package com.company.utils;
+package utils;
 
 public class Pair<A, B> {
     private A first;

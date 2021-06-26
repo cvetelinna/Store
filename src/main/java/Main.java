@@ -1,15 +1,12 @@
-package com.company;
-
-import com.company.distribution.CartItem;
-import com.company.enums.ClothingSizeEnum;
-import com.company.enums.ProductTypeEnum;
-import com.company.products.Appliance;
-import com.company.products.Clothing;
-import com.company.products.PerishableProduct;
-import com.company.products.ProductPrice;
-import com.company.services.CartService;
-import com.company.services.CashierService;
-import com.company.services.ProductService;
+import distribution.CartItem;
+import enums.ClothingSizeEnum;
+import enums.ProductTypeEnum;
+import products.Appliance;
+import products.Clothing;
+import products.PerishableProduct;
+import services.CartService;
+import services.CashierService;
+import services.ProductService;
 
 import java.math.BigDecimal;
 import java.time.Instant;

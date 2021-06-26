@@ -1,4 +1,4 @@
-package com.company.utils;
+package utils;
 
 public class Constants {
     public static final String perishableFullDiscount = "0.5";

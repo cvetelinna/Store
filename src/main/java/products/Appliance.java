@@ -1,14 +1,11 @@
-package com.company.products;
+package products;
 
-import com.company.enums.ProductTypeEnum;
-import com.company.utils.Constants;
+import enums.ProductTypeEnum;
 
 import java.math.BigDecimal;
 import java.time.Instant;
-import java.time.ZoneId;
-import java.util.Date;
 
-public class Appliance extends BaseProduct{
+public class Appliance extends BaseProduct {
     private final BigDecimal weight;
     private final String model;
     private final Instant productionDate;

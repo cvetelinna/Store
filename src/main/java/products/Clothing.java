@@ -1,12 +1,9 @@
-package com.company.products;
+package products;
 
-import com.company.enums.ClothingSizeEnum;
-import com.company.enums.ProductTypeEnum;
-import com.company.utils.Constants;
+import enums.ClothingSizeEnum;
+import enums.ProductTypeEnum;
 
 import java.math.BigDecimal;
-import java.time.Instant;
-import java.time.ZoneId;
 
 public class Clothing extends BaseProduct{
     private final ClothingSizeEnum size;
