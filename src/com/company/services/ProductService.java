@@ -13,17 +13,11 @@ import java.time.ZoneId;
 public class ProductService implements IProductService {
     @Override
     public ProductPrice getPriceWithDiscount(BaseProduct baseProduct) {
-        switch (baseProduct.getType()) {
-            case FOOD:
-            case BEVERAGE:
-                return getDiscountForPerishable((PerishableProduct) baseProduct);
-            case APPLIANCE:
-                return getDiscountForAppliance(baseProduct);
-            case CLOTHING:
-                return getDiscountForClothing(baseProduct);
-            default:
-                return new ProductPrice(baseProduct.getPrice());
-        }
+        return switch (baseProduct.getType()) {
+            case FOOD, BEVERAGE -> getDiscountForPerishable((PerishableProduct) baseProduct);
+            case APPLIANCE -> getDiscountForAppliance(baseProduct);
+            case CLOTHING -> getDiscountForClothing(baseProduct);
+        };
     }
 
     private ProductPrice getDiscountForPerishable(PerishableProduct perishableProduct) {
