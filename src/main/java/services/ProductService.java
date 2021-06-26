@@ -1,12 +1,13 @@
-package com.company.services;
+package services;
 
-import com.company.products.BaseProduct;
-import com.company.products.PerishableProduct;
-import com.company.products.ProductPrice;
-import com.company.utils.Constants;
+import products.BaseProduct;
+import products.PerishableProduct;
+import products.ProductPrice;
+import utils.Constants;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.DayOfWeek;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.ZoneId;
@@ -16,8 +17,8 @@ public class ProductService implements IProductService {
     public ProductPrice getPriceWithDiscount(BaseProduct baseProduct) {
         return switch (baseProduct.getType()) {
             case FOOD, BEVERAGE -> getDiscountForPerishable((PerishableProduct) baseProduct);
-            case APPLIANCE -> getDiscountForAppliance(baseProduct);
-            case CLOTHING -> getDiscountForClothing(baseProduct);
+            case APPLIANCE -> getDiscountForAppliance(baseProduct, Instant.now().atZone(ZoneId.systemDefault()).getDayOfWeek());
+            case CLOTHING -> getDiscountForClothing(baseProduct, Instant.now().atZone(ZoneId.systemDefault()).getDayOfWeek());
         };
     }
 
@@ -61,11 +62,9 @@ public class ProductService implements IProductService {
         return new ProductPrice(perishableProduct.getPrice());
     }
 
-    private ProductPrice getDiscountForAppliance(BaseProduct baseProduct){
-        var currentWeekDay = Instant.now().atZone(ZoneId.systemDefault()).getDayOfWeek();
-
+    public ProductPrice getDiscountForAppliance(BaseProduct baseProduct, DayOfWeek dayOfWeek){
         if (baseProduct.getPrice().compareTo(new BigDecimal(Constants.appliancePriceDiscountThreshold)) > 0) {
-            switch (currentWeekDay) {
+            switch (dayOfWeek) {
                 case SATURDAY, SUNDAY -> {
                     var discountPercentage = new BigDecimal("1")
                                     .subtract(new BigDecimal(Constants.applianceWeekendDiscount));
@@ -85,10 +84,9 @@ public class ProductService implements IProductService {
 
         return new ProductPrice(baseProduct.getPrice());
     }
-    private ProductPrice getDiscountForClothing(BaseProduct baseProduct) {
-        var currentWeekDay = Instant.now().atZone(ZoneId.systemDefault()).getDayOfWeek();
 
-        switch(currentWeekDay){
+    public ProductPrice getDiscountForClothing(BaseProduct baseProduct, DayOfWeek dayOfWeek) {
+        switch(dayOfWeek){
             case SATURDAY:
             case SUNDAY:
                 return new ProductPrice(baseProduct.getPrice());
