@@ -49,39 +49,10 @@ public class CashierService implements ICashierService {
 
         System.out.println("----------------------------------------");
         System.out.printf("SUBTOTAL: $%s%n",
-                cartService.sumSubtotal(items)
-                    .setScale(2, RoundingMode.HALF_UP));
+                cartService.sumSubtotal(items));
         System.out.printf("DISCOUNT: $%s%n",
-                cartService.sumTotalDiscountAmount(items)
-                    .setScale(2, RoundingMode.HALF_UP));
+                cartService.sumTotalDiscountAmount(items));
         System.out.printf("TOTAL: $%s%n",
                 cartService.sumTotal(items));
     }
 }
-/*
-apple - Brand A
-
-2.45 x $1.50 = $3.68
-
-#discount 50%  -$1.84
-
-
-milk BrandM
-3 x $0.99 = $2.97
-
-
-T-shirt BrandT M violet
-2 x $15.99 = $31.98
-#discount 10% -$3.20
-
-
-laptop BrandL ModelL
-1 x $2345 = $2345
------------------------------------------------------------------------------------
-
-SUBTOTAL: $2383.63
-DISCOUNT: -$5.04
-
-TOTAL: $2378.59
-
-*/
