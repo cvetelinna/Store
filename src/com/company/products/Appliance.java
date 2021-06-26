@@ -9,9 +9,9 @@ import java.time.ZoneId;
 import java.util.Date;
 
 public class Appliance extends BaseProduct{
-    private BigDecimal weight;
-    private String model;
-    private Instant productionDate;
+    private final BigDecimal weight;
+    private final String model;
+    private final Instant productionDate;
 
     public Appliance(ProductTypeEnum type,
                      String name,

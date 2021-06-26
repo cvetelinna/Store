@@ -6,8 +6,8 @@ import com.company.products.PerishableProduct;
 import java.math.BigDecimal;
 
 public class CartItem {
-    private BigDecimal quantity;
-    private BaseProduct product;
+    private final BigDecimal quantity;
+    private final BaseProduct product;
 
     public CartItem(BaseProduct product, BigDecimal quantity) {
         this.product = product;

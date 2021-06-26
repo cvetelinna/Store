@@ -3,10 +3,10 @@ package com.company.products;
 import java.math.BigDecimal;
 
 public class ProductPrice {
-    private BigDecimal originalPrice;
-    private BigDecimal discountedPrice;
-    private BigDecimal discountAmount;
-    private BigDecimal discountPercentage;
+    private final BigDecimal originalPrice;
+    private final BigDecimal discountAmount;
+    private final BigDecimal discountPercentage;
+    private final boolean isDiscounted;
     private boolean isDiscounted;
 
     public ProductPrice(

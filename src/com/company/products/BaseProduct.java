@@ -5,10 +5,10 @@ import com.company.enums.ProductTypeEnum;
 import java.math.BigDecimal;
 
 public abstract class BaseProduct {
-    private ProductTypeEnum type;
-    private String name;
-    private String brand;
-    private BigDecimal price;
+    private final ProductTypeEnum type;
+    private final String name;
+    private final String brand;
+    private final BigDecimal price;
 
     public BaseProduct(ProductTypeEnum type, String name, String brand, BigDecimal price) {
         this.type = type;

@@ -9,8 +9,8 @@ import java.time.Instant;
 import java.time.ZoneId;
 
 public class Clothing extends BaseProduct{
-    private ClothingSizeEnum size;
-    private String color;
+    private final ClothingSizeEnum size;
+    private final String color;
 
     public Clothing(ProductTypeEnum type, String name, String brand, BigDecimal price, ClothingSizeEnum size, String color) {
         super(type, name, brand, price);

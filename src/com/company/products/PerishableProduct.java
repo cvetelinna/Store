@@ -8,7 +8,7 @@ import java.time.Duration;
 import java.time.Instant;
 
 public class PerishableProduct extends BaseProduct {
-    private Instant expirationDate;
+    private final Instant expirationDate;
 
     public PerishableProduct(ProductTypeEnum type, String name, String brand, BigDecimal price, Instant expirationDate) {
         super(type, name, brand, price);
