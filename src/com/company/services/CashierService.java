@@ -55,8 +55,7 @@ public class CashierService implements ICashierService {
                 cartService.sumTotalDiscountAmount(items)
                     .setScale(2, RoundingMode.HALF_UP));
         System.out.printf("TOTAL: $%s%n",
-                cartService.sumTotal(items)
-                    .setScale(2, RoundingMode.HALF_UP));
+                cartService.sumTotal(items));
     }
 }
 /*

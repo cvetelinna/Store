@@ -6,6 +6,7 @@ import com.company.products.ProductPrice;
 import com.company.utils.Constants;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.ZoneId;
@@ -29,12 +30,12 @@ public class ProductService implements IProductService {
             var discountPercentage = new BigDecimal("1")
                     .subtract(new BigDecimal(Constants.perishableFullDiscount));
             var priceWithDiscount = perishableProduct.getPrice()
-                    .multiply(new BigDecimal(Constants.perishableFullDiscount));
+                    .multiply(new BigDecimal(Constants.perishableFullDiscount))
+                    .setScale(2, RoundingMode.HALF_UP);
             var discountAmount = perishableProduct.getPrice().subtract(priceWithDiscount);
 
             return new ProductPrice(
                     perishableProduct.getPrice(),
-                    priceWithDiscount,
                     discountAmount,
                     discountPercentage,
                     true
@@ -45,12 +46,12 @@ public class ProductService implements IProductService {
             var discountPercentage = new BigDecimal("1")
                     .subtract(new BigDecimal(Constants.perishablePartialDiscount));
             var priceWithDiscount = perishableProduct.getPrice()
-                    .multiply(new BigDecimal(Constants.perishablePartialDiscount));
+                    .multiply(new BigDecimal(Constants.perishablePartialDiscount))
+                    .setScale(2, RoundingMode.HALF_UP);
             var discountAmount = perishableProduct.getPrice().subtract(priceWithDiscount);
 
             return new ProductPrice(
                     perishableProduct.getPrice(),
-                    priceWithDiscount,
                     discountAmount,
                     discountPercentage,
                     true
@@ -69,12 +70,12 @@ public class ProductService implements IProductService {
                     var discountPercentage = new BigDecimal("1")
                                     .subtract(new BigDecimal(Constants.applianceWeekendDiscount));
                     var priceWithDiscount = baseProduct.getPrice()
-                                    .multiply(new BigDecimal(Constants.applianceWeekendDiscount));
+                                    .multiply(new BigDecimal(Constants.applianceWeekendDiscount))
+                                    .setScale(2, RoundingMode.HALF_UP);
                     var discountAmount = baseProduct.getPrice().subtract(priceWithDiscount);
 
                     return new ProductPrice(
                             baseProduct.getPrice(),
-                            priceWithDiscount,
                             discountAmount,
                             discountPercentage,
                             true);
@@ -95,12 +96,13 @@ public class ProductService implements IProductService {
                 var discountPercentage = new BigDecimal("1")
                         .subtract(new BigDecimal(Constants.clothingWeekDayDiscount));
                 var priceWithDiscount = baseProduct.getPrice()
-                        .multiply(new BigDecimal(Constants.clothingWeekDayDiscount));
-                var discountAmount = baseProduct.getPrice().subtract(priceWithDiscount);
+                        .multiply(new BigDecimal(Constants.clothingWeekDayDiscount))
+                        .setScale(2, RoundingMode.HALF_UP);
+                var discountAmount = baseProduct.getPrice()
+                        .subtract(priceWithDiscount);
 
                 return new ProductPrice(
                         baseProduct.getPrice(),
-                        priceWithDiscount,
                         discountAmount,
                         discountPercentage,
                         true);
